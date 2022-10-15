@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modification>
+<id><![CDATA[Remote Site Product Image URL]]></id>
+<version><![CDATA[OC v.2.2.0.0]]></version>
+<vqmver><![CDATA[2.5.1]]></vqmver>
+<author><![CDATA[BenDEAN]]></author>
+
+<file name="catalog/controller/product/product.php">
+<operation error="log">
+<search position="replace"><![CDATA[
+	$data['thumb'] = $this->model_tool_image->resize($product_info['image'], $this->config->get($this->config->get('config_theme') . '_image_thumb_width'), $this->config->get($this->config->get('config_theme') . '_image_thumb_height'));
+]]></search>
+<add><![CDATA[
+	$data['thumb'] = 'http://www.yesclick.ga/image/' . $product_info['image'];
+]]></add>
+</operation>
+</file>
+
+<file name="catalog/controller/product/product.php">
+<operation error="log">
+<search position="replace"><![CDATA[
+	'thumb' => $this->model_tool_image->resize($result['image'], $this->config->get($this->config->get('config_theme') . '_image_additional_width'), $this->config->get($this->config->get('config_theme') . '_image_additional_height'))
+]]></search>
+<add><![CDATA[
+	'thumb' => 'http://www.yesclick.ga/image/' . $result['image']
+]]></add>
+</operation>
+</file>
+
+<file name="catalog/controller/product/product.php">
+<operation error="log">
+<search position="replace"><![CDATA[
+	$data['popup'] = $this->model_tool_image->resize($product_info['image'], $this->config->get($this->config->get('config_theme') . '_image_popup_width'), $this->config->get($this->config->get('config_theme') . '_image_popup_height'));
+]]></search>
+<add><![CDATA[
+	$data['popup'] = 'http://www.yesclick.ga/image/' . $product_info['image'];
+]]></add>
+</operation>
+</file>
+
+<file name="catalog/controller/product/product.php">
+<operation error="log">
+<search position="replace"><![CDATA[
+	'popup' => $this->model_tool_image->resize($result['image'], $this->config->get($this->config->get('config_theme') . '_image_popup_width'), $this->config->get($this->config->get('config_theme') . '_image_popup_height')),
+]]></search>
+<add><![CDATA[
+	'popup' => 'http://www.yesclick.ga/image/' . $result['image'],
+]]></add>
+</operation>
+</file>
+
+</modification>
